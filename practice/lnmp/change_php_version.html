@@ -1,0 +1,535 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>切换 PHP 版本 · Shell 脚本学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="JalanJiang.江子抑 <jjy@meitu.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="install_php_extension.html" />
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"JalanJiang","repo":"Notes-On-Linux-Shell-Scripting-Cookbook","type":"star","size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://jalan.space" target="_blank" class="custom-link">我的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../concepts.html">
+            
+                <a href="../../concepts.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    基本概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../concepts/image.html">
+            
+                <a href="../../concepts/image.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../concepts/container.html">
+            
+                <a href="../../concepts/container.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../concepts/repository.html">
+            
+                <a href="../../concepts/repository.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    镜像
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../image/get.html">
+            
+                <a href="../../image/get.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    获取镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../image/list.html">
+            
+                <a href="../../image/list.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    列出镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    实践
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../dnmp.html">
+            
+                <a href="../dnmp.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Docker 下 LNMP 环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" >
+            
+                <span>
+            
+                    
+                        <b>1.4.1.1.</b>
+                    
+                    预备知识
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.1.2" data-path="change_php_version.html">
+            
+                <a href="change_php_version.html">
+            
+                    
+                        <b>1.4.1.2.</b>
+                    
+                    切换 PHP 版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="install_php_extension.html">
+            
+                <a href="install_php_extension.html">
+            
+                    
+                        <b>1.4.1.3.</b>
+                    
+                    安装 PHP 扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.1" data-path="docker_phpstorm_xdebug.html">
+            
+                <a href="docker_phpstorm_xdebug.html">
+            
+                    
+                        <b>1.4.1.3.1.</b>
+                    
+                    XDEBUG
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="nginx_conf.html">
+            
+                <a href="nginx_conf.html">
+            
+                    
+                        <b>1.4.1.4.</b>
+                    
+                    nginx 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >切换 PHP 版本</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5207;&#x6362;-php-&#x7248;&#x672C;">&#x5207;&#x6362; PHP &#x7248;&#x672C;</h1>
+<p>&#x9879;&#x76EE;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x63D0;&#x4F9B;&#x4E86; <code>docker-compose54.yml</code> &#x548C; <code>docker-compose56.yml</code> &#x7528;&#x4E8E;&#x5207;&#x6362;&#x5230; PHP5.4 &#x548C; PHP5.6 &#x7248;&#x672C;&#x3002;</p>
+<p>&#x7248;&#x672C;&#x5207;&#x6362;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre class="language-"><code>$ docker-compose -f docker-compose54.yml up
+$ docker-compose -f docker-compose56.yml up
+</code></pre><p>&#x7136;&#x800C;&#x5728;&#x6211;&#x6267;&#x884C; <code>docker-compose up</code> &#x5F00;&#x542F; PHP7.2 &#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C; <code>docker-compose -f docker-compose56.yml up</code> &#x60F3;&#x5C06; PHP &#x7248;&#x672C;&#x5207;&#x56DE; 5.6 &#x5374;&#x53D1;&#x73B0;&#x6253;&#x5F00;&#x7684; PHP &#x7248;&#x672C;&#x4F9D;&#x7136;&#x662F; 7.2 &#x2026;&#x2026;</p>
+<p>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x5F53;&#x5BB9;&#x5668;&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x540E;&#xFF0C;<code>docker-compose up</code> &#x4F1A;&#x76F4;&#x63A5;&#x542F;&#x52A8;&#x539F;&#x6765;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5373;&#x4FBF;&#x4F7F;&#x7528; <code>-f</code> &#x6307;&#x5B9A;&#x4E86;&#x65B0;&#x7684; <code>yml</code> &#x6587;&#x4EF6;&#xFF0C;&#x6253;&#x5F00;&#x7684;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x539F;&#x6765;&#x542F;&#x52A8;&#x8FC7;&#x7684;&#x90A3;&#x4E2A;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5207;&#x6362;&#x7248;&#x672C;&#x524D;&#x8FD8;&#x662F;&#x9700;&#x8981;<strong>&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#x955C;&#x50CF;&#x7684;</strong>&#x3002;</p>
+<p>&#x5207;&#x6362;&#x7248;&#x672C;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x505C;&#x6B62;&#x539F;&#x5BB9;&#x5668; <code>docker stop container_name</code></li>
+<li>&#x5220;&#x9664;&#x539F;&#x5BB9;&#x5668; <code>docker rm container_name</code></li>
+<li>&#x91CD;&#x542F;&#x5BB9;&#x5668;&#x670D;&#x52A1;&#xFF0C;&#x5BF9;&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x91CD;&#x6784;&#x5EFA;</li>
+</ul>
+<pre class="language-"><code>$ docker-compose -f docker-compose56.yml up --build php
+</code></pre><footer class="page-footer"><span class="copyright">JalanJiang.&#x6C5F;&#x5B50;&#x6291; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2018-05-20 00:51:00
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="install_php_extension.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 安装 PHP 扩展">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"切换 PHP 版本","level":"1.4.1.2","depth":3,"next":{"title":"安装 PHP 扩展","level":"1.4.1.3","depth":3,"path":"practice/lnmp/install_php_extension.md","ref":"practice/lnmp/install_php_extension.md","articles":[{"title":"XDEBUG","level":"1.4.1.3.1","depth":4,"path":"practice/lnmp/docker_phpstorm_xdebug.md","ref":"practice/lnmp/docker_phpstorm_xdebug.md","articles":[]}]},"previous":{"title":"预备知识","level":"1.4.1.1","depth":3,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","disqus","prism","-highlight","baidu","tbfed-pagefooter","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"JalanJiang.江子抑","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"jalanjiang"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":2},"theme-comscore":{},"github-buttons":{"buttons":[{"user":"JalanJiang","repo":"Notes-On-Linux-Shell-Scripting-Cookbook","type":"star","size":"small"}]},"baidu":{"token":"c47c7dbbbbb8b1bd7729048f358cd896"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","author":"JalanJiang.江子抑 <jjy@meitu.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Shell 脚本学习笔记","links":{"sidebar":{"我的博客":"http://jalan.space"},"sharing":{"google":null,"facebook":null,"twitter":null,"weibo":null,"all":null}},"gitbook":"*","description":"《Linux Shell 脚本攻略（第2版）》学习笔记","extension":""},"file":{"path":"practice/lnmp/change_php_version.md","mtime":"2018-05-19T16:51:00.770Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-20T16:04:34.947Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

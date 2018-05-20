@@ -1,0 +1,566 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>XDEBUG · Shell 脚本学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="JalanJiang.江子抑 <jjy@meitu.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="nginx_conf.html" />
+    
+    
+    <link rel="prev" href="install_php_extension.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"JalanJiang","repo":"Notes-On-Linux-Shell-Scripting-Cookbook","type":"star","size":"small"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://jalan.space" target="_blank" class="custom-link">我的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../concepts.html">
+            
+                <a href="../../concepts.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    基本概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../concepts/image.html">
+            
+                <a href="../../concepts/image.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../concepts/container.html">
+            
+                <a href="../../concepts/container.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../concepts/repository.html">
+            
+                <a href="../../concepts/repository.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    镜像
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../image/get.html">
+            
+                <a href="../../image/get.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    获取镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../image/list.html">
+            
+                <a href="../../image/list.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    列出镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    实践
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../dnmp.html">
+            
+                <a href="../dnmp.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Docker 下 LNMP 环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" >
+            
+                <span>
+            
+                    
+                        <b>1.4.1.1.</b>
+                    
+                    预备知识
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="change_php_version.html">
+            
+                <a href="change_php_version.html">
+            
+                    
+                        <b>1.4.1.2.</b>
+                    
+                    切换 PHP 版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="install_php_extension.html">
+            
+                <a href="install_php_extension.html">
+            
+                    
+                        <b>1.4.1.3.</b>
+                    
+                    安装 PHP 扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1.3.1" data-path="docker_phpstorm_xdebug.html">
+            
+                <a href="docker_phpstorm_xdebug.html">
+            
+                    
+                        <b>1.4.1.3.1.</b>
+                    
+                    XDEBUG
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="nginx_conf.html">
+            
+                <a href="nginx_conf.html">
+            
+                    
+                        <b>1.4.1.4.</b>
+                    
+                    nginx 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >XDEBUG</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-&#x4E0B;-phpstorm--xdebug-&#x8C03;&#x8BD5;">Docker &#x4E0B; PHPSTORM + XDEBUG &#x8C03;&#x8BD5;</h1>
+<h2 id="xdebug-&#x94FE;&#x8DEF;&#x4E0E;&#x539F;&#x7406;">xdebug &#x94FE;&#x8DEF;&#x4E0E;&#x539F;&#x7406;</h2>
+<h3 id="docker--lnmp--xdebug">Docker + LNMP + xdebug</h3>
+<p><img src="../../img/lnmp_xdebug.png" alt="xdebug&#x94FE;&#x8DEF;"></p>
+<h3 id="xdebug-&#x539F;&#x7406;">xdebug &#x539F;&#x7406;</h3>
+<p><img src="../../img/xdebug_base.gif" alt="xdebug&#x539F;&#x7406;"></p>
+<ol>
+<li>xdebug &#x8C03;&#x8BD5;&#x5668;&#x63D2;&#x4EF6;&#x5F00;&#x542F;&#x8C03;&#x8BD5;&#xFF0C;&#x6B64;&#x65F6;&#x5B83;&#x4F1A;&#x76D1;&#x542C; PHP &#x670D;&#x52A1;&#x5668;&#x4E2D; xdebug &#x53D1;&#x9001;&#x6765;&#x7684;&#x6570;&#x636E;</li>
+<li>&#x5411; PHP &#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001; uri &#x8BF7;&#x6C42;&#xFF0C;&#x5F53; PHP &#x7684; xdebug &#x6A21;&#x5757;&#x68C0;&#x6D4B;&#x5230;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x5F00;&#x542F;&#x8C03;&#x8BD5;&#x65F6;&#xFF08;&#x6B64;&#x8BF7;&#x6C42; <code>cookie</code> &#x4E2D;&#x5305;&#x542B; <code>XDEBUG_SESSION</code> &#x5B57;&#x6BB5;&#xFF09;</li>
+<li>xdebug &#x5C06;&#x8BF7;&#x6C42;&#x7684;&#x54CD;&#x5E94;&#x6302;&#x8D77;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#xFF08;&#x6536;&#x96C6; PHP &#x5F53;&#x524D;&#x7684;&#x8FD0;&#x884C;&#x6570;&#x636E;&#xFF09;</li>
+<li>xdebug &#x6839;&#x636E;&#x914D;&#x7F6E;&#x4E0E; xdebug &#x8C03;&#x8BD5;&#x5668;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF08;&#x9075;&#x5FAA; BGDp &#x534F;&#x8BAE;&#xFF09;&#xFF0C;&#x5C06;&#x6536;&#x96C6;&#x5230;&#x7684;&#x8FD0;&#x884C;&#x6570;&#x636E;&#x53D1;&#x9001;&#x5230; <code>remote_host.remote_port</code> &#xFF0C;&#x4F60;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x5F53;&#x524D;&#x65AD;&#x70B9;&#x7684;&#x8FD0;&#x884C;&#x6570;&#x636E;&#x4E86;</li>
+<li>&#x5355;&#x6B65;&#x8C03;&#x8BD5;&#x76F4;&#x81F3;&#x7ED3;&#x675F;&#xFF0C;PHP &#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x3002;</li>
+</ol>
+<h2 id="xdebug-&#x914D;&#x7F6E;">xdebug &#x914D;&#x7F6E;</h2>
+<p>&#x5C06; <code>xdebug</code> &#x914D;&#x7F6E;&#x5199;&#x5165; <code>php.ini</code> &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[xdebug]
+xdebug.auto_trace = On
+xdebug.profiler_append = 0
+xdebug.profiler_enable = On
+xdebug.profiler_enable_trigger = 0
+xdebug.profiler_output_name = &quot;cachegrind.out.%t-%s&quot;
+xdebug.remote_enable = 1
+xdebug.remote_handler = &quot;dbgp&quot;
+xdebug.remote_host = docker.for.mac.localhost
+xdebug.trace_output_dir = &quot;/tmp/&quot;
+xdebug.remote_port = 9001
+xdebug.idekey = &quot;PHPSTORM&quot;
+xdebug.remote_autostart = On
+</code></pre><h3 id="&#x5173;&#x4E8E;-remotehost">&#x5173;&#x4E8E; remote_host</h3>
+<p>&#x5728; Mac &#x4E2D;&#x4F7F;&#x7528; Docker &#x65F6;&#xFF0C;<code>xdebug.remote_host</code> &#x4E0D;&#x80FD;&#x518D;&#x914D;&#x7F6E;&#x4E3A; <code>127.0.0.1</code> &#x6216; <code>localhost</code>&#xFF0C;&#x56E0;&#x4E3A;&#x5BB9;&#x5668;&#x4E2D;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x901A;&#x8FC7; <code>127.0.0.1</code> &#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x7684;&#x4E3B;&#x673A;&#x3002;</p>
+<p>&#x53EF;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</p>
+<pre class="language-"><code>xdebug.remote_host = docker.for.mac.localhost
+</code></pre><h2 id="phpstorm-&#x914D;&#x7F6E;">PHPSTORM &#x914D;&#x7F6E;</h2>
+<h3 id="&#x9700;&#x989D;&#x5916;&#x914D;&#x7F6E;-mapping">&#x9700;&#x989D;&#x5916;&#x914D;&#x7F6E; mapping</h3>
+<p><img src="../../img/xdebug_phpstorm_mapping.png" alt="PHPStorm Server mapping"></p>
+<p>&#x670D;&#x52A1;&#x5668;&#x5728; Docker&#xFF08;&#x6216;&#x865A;&#x62DF;&#x673A;&#xFF09; &#x4E2D;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728; PHPStorm &#x914D;&#x7F6E; mapping&#xFF0C;&#x5C06;&#x6240;&#x8BBF;&#x95EE;&#x9879;&#x76EE;&#x7684;&#x5B9E;&#x9645;&#x76EE;&#x5F55;&#x5BF9;&#x5E94;&#x5230;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
+<ul>
+<li><a href="https://forums.docker.com/t/xdebug-on-docker-with-phpstorm-doesnt-work/22858" target="_blank">Xdebug on docker with PhpStorm doesn&#x2019;t work</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">JalanJiang.&#x6C5F;&#x5B50;&#x6291; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2018-05-21 00:04:04
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="install_php_extension.html" class="navigation navigation-prev " aria-label="Previous page: 安装 PHP 扩展">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="nginx_conf.html" class="navigation navigation-next " aria-label="Next page: nginx 配置">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"XDEBUG","level":"1.4.1.3.1","depth":4,"next":{"title":"nginx 配置","level":"1.4.1.4","depth":3,"path":"practice/lnmp/nginx_conf.md","ref":"practice/lnmp/nginx_conf.md","articles":[]},"previous":{"title":"安装 PHP 扩展","level":"1.4.1.3","depth":3,"path":"practice/lnmp/install_php_extension.md","ref":"practice/lnmp/install_php_extension.md","articles":[{"title":"XDEBUG","level":"1.4.1.3.1","depth":4,"path":"practice/lnmp/docker_phpstorm_xdebug.md","ref":"practice/lnmp/docker_phpstorm_xdebug.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-comscore","disqus","prism","-highlight","baidu","tbfed-pagefooter","github-buttons"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"JalanJiang.江子抑","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"jalanjiang"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"theme":"sepia","family":"serif","size":2},"theme-comscore":{},"github-buttons":{"buttons":[{"user":"JalanJiang","repo":"Notes-On-Linux-Shell-Scripting-Cookbook","type":"star","size":"small"}]},"baidu":{"token":"c47c7dbbbbb8b1bd7729048f358cd896"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","author":"JalanJiang.江子抑 <jjy@meitu.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Shell 脚本学习笔记","links":{"sidebar":{"我的博客":"http://jalan.space"},"sharing":{"google":null,"facebook":null,"twitter":null,"weibo":null,"all":null}},"gitbook":"*","description":"《Linux Shell 脚本攻略（第2版）》学习笔记","extension":""},"file":{"path":"practice/lnmp/docker_phpstorm_xdebug.md","mtime":"2018-05-20T16:04:04.272Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-20T16:04:34.947Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
