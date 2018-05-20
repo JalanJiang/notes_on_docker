@@ -10,3 +10,8 @@
     * [列出镜像](image/list.md)
 * 实践
     * [Docker 下 LNMP 环境搭建](practice/dnmp.md)
+        * 预备知识
+        * [切换 PHP 版本](practice/lnmp/change_php_version.md)
+        * [安装 PHP 扩展](practice/lnmp/install_php_extension.md)
+            * [XDEBUG](practice/lnmp/docker_phpstorm_xdebug.md)
+        * [nginx 配置](practice/lnmp/nginx_conf.md)
